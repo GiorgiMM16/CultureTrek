@@ -23,6 +23,7 @@
 		CB6A5D762C316FFC000BF551 /* CityListPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D752C316FFC000BF551 /* CityListPageVM.swift */; };
 		CB6A5D782C31702F000BF551 /* CityMuseumsListPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D772C31702F000BF551 /* CityMuseumsListPageVC.swift */; };
 		CB6A5D7A2C31703E000BF551 /* CityMuseumsListPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D792C31703E000BF551 /* CityMuseumsListPageVM.swift */; };
+		CB6A5D7D2C31711A000BF551 /* SimpleNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = CB6A5D7C2C31711A000BF551 /* SimpleNetworking */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB6A5D7D2C31711A000BF551 /* SimpleNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +173,9 @@
 			dependencies = (
 			);
 			name = CultureTrek;
+			packageProductDependencies = (
+				CB6A5D7C2C31711A000BF551 /* SimpleNetworking */,
+			);
 			productName = CultureTrek;
 			productReference = CB6A5D322C316CEC000BF551 /* CultureTrek.app */;
 			productType = "com.apple.product-type.application";
@@ -199,6 +204,9 @@
 				Base,
 			);
 			mainGroup = CB6A5D292C316CEB000BF551;
+			packageReferences = (
+				CB6A5D7B2C31711A000BF551 /* XCRemoteSwiftPackageReference "SimpleNetworking" */,
+			);
 			productRefGroup = CB6A5D332C316CEC000BF551 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -449,6 +457,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CB6A5D7B2C31711A000BF551 /* XCRemoteSwiftPackageReference "SimpleNetworking" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/GujMeister/SimpleNetworking";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CB6A5D7C2C31711A000BF551 /* SimpleNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB6A5D7B2C31711A000BF551 /* XCRemoteSwiftPackageReference "SimpleNetworking" */;
+			productName = SimpleNetworking;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CB6A5D2A2C316CEB000BF551 /* Project object */;
 }
