@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB4E4ED12C3C5A9900FAA3D3 /* WelcomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4E4ED02C3C5A9900FAA3D3 /* WelcomePageVC.swift */; };
+		CB4E4ED32C3C5AAA00FAA3D3 /* WelcomePageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4E4ED22C3C5AAA00FAA3D3 /* WelcomePageVM.swift */; };
+		CB4E4ED62C3C5ABF00FAA3D3 /* LogInPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4E4ED52C3C5ABF00FAA3D3 /* LogInPageVM.swift */; };
+		CB4E4ED82C3C5AD200FAA3D3 /* LogInPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4E4ED72C3C5AD200FAA3D3 /* LogInPageVC.swift */; };
+		CB4E4EDB2C3C5B1500FAA3D3 /* RegisterPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4E4EDA2C3C5B1500FAA3D3 /* RegisterPageVC.swift */; };
+		CB4E4EDD2C3C5B2700FAA3D3 /* RegisterPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4E4EDC2C3C5B2700FAA3D3 /* RegisterPageVM.swift */; };
 		CB6A5D362C316CEC000BF551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D352C316CEC000BF551 /* AppDelegate.swift */; };
 		CB6A5D382C316CEC000BF551 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D372C316CEC000BF551 /* SceneDelegate.swift */; };
 		CB6A5D3F2C316CED000BF551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB6A5D3E2C316CED000BF551 /* Assets.xcassets */; };
@@ -27,6 +33,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB4E4ED02C3C5A9900FAA3D3 /* WelcomePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageVC.swift; sourceTree = "<group>"; };
+		CB4E4ED22C3C5AAA00FAA3D3 /* WelcomePageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageVM.swift; sourceTree = "<group>"; };
+		CB4E4ED52C3C5ABF00FAA3D3 /* LogInPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPageVM.swift; sourceTree = "<group>"; };
+		CB4E4ED72C3C5AD200FAA3D3 /* LogInPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPageVC.swift; sourceTree = "<group>"; };
+		CB4E4EDA2C3C5B1500FAA3D3 /* RegisterPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPageVC.swift; sourceTree = "<group>"; };
+		CB4E4EDC2C3C5B2700FAA3D3 /* RegisterPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPageVM.swift; sourceTree = "<group>"; };
 		CB6A5D322C316CEC000BF551 /* CultureTrek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CultureTrek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6A5D352C316CEC000BF551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB6A5D372C316CEC000BF551 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +72,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB4E4ECF2C3C5A7100FAA3D3 /* Welcome Page */ = {
+			isa = PBXGroup;
+			children = (
+				CB4E4ED02C3C5A9900FAA3D3 /* WelcomePageVC.swift */,
+				CB4E4ED22C3C5AAA00FAA3D3 /* WelcomePageVM.swift */,
+			);
+			path = "Welcome Page";
+			sourceTree = "<group>";
+		};
+		CB4E4ED42C3C5AB100FAA3D3 /* Log In Page */ = {
+			isa = PBXGroup;
+			children = (
+				CB4E4ED52C3C5ABF00FAA3D3 /* LogInPageVM.swift */,
+				CB4E4ED72C3C5AD200FAA3D3 /* LogInPageVC.swift */,
+			);
+			path = "Log In Page";
+			sourceTree = "<group>";
+		};
+		CB4E4ED92C3C5B0400FAA3D3 /* Register Page */ = {
+			isa = PBXGroup;
+			children = (
+				CB4E4EDA2C3C5B1500FAA3D3 /* RegisterPageVC.swift */,
+				CB4E4EDC2C3C5B2700FAA3D3 /* RegisterPageVM.swift */,
+			);
+			path = "Register Page";
+			sourceTree = "<group>";
+		};
 		CB6A5D292C316CEB000BF551 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +119,9 @@
 		CB6A5D342C316CEC000BF551 /* CultureTrek */ = {
 			isa = PBXGroup;
 			children = (
+				CB4E4ED92C3C5B0400FAA3D3 /* Register Page */,
+				CB4E4ED42C3C5AB100FAA3D3 /* Log In Page */,
+				CB4E4ECF2C3C5A7100FAA3D3 /* Welcome Page */,
 				CB6A5D5E2C316E48000BF551 /* Supporting */,
 				CB6A5D5D2C316E3B000BF551 /* City Museums List Page */,
 				CB6A5D5C2C316E33000BF551 /* City List Page */,
@@ -233,20 +275,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB4E4EDD2C3C5B2700FAA3D3 /* RegisterPageVM.swift in Sources */,
 				CB6A5D742C316FF0000BF551 /* CityListPageVC.swift in Sources */,
 				CB6A5D702C316FD3000BF551 /* DetailsPageVC.swift in Sources */,
 				CB6A5D682C316F9B000BF551 /* FavoritesPageVC.swift in Sources */,
 				CB6A5D662C316F79000BF551 /* MainPageVM.swift in Sources */,
+				CB4E4EDB2C3C5B1500FAA3D3 /* RegisterPageVC.swift in Sources */,
 				CB6A5D7A2C31703E000BF551 /* CityMuseumsListPageVM.swift in Sources */,
 				CB6A5D782C31702F000BF551 /* CityMuseumsListPageVC.swift in Sources */,
 				CB6A5D6C2C316FB3000BF551 /* SearchPageVC.swift in Sources */,
+				CB4E4ED82C3C5AD200FAA3D3 /* LogInPageVC.swift in Sources */,
 				CB6A5D722C316FDE000BF551 /* DetailsPageVM.swift in Sources */,
 				CB6A5D6E2C316FC5000BF551 /* SearchPageVM.swift in Sources */,
 				CB6A5D622C316EFD000BF551 /* MainPageVC.swift in Sources */,
+				CB4E4ED32C3C5AAA00FAA3D3 /* WelcomePageVM.swift in Sources */,
 				CB6A5D762C316FFC000BF551 /* CityListPageVM.swift in Sources */,
+				CB4E4ED12C3C5A9900FAA3D3 /* WelcomePageVC.swift in Sources */,
 				CB6A5D362C316CEC000BF551 /* AppDelegate.swift in Sources */,
 				CB6A5D382C316CEC000BF551 /* SceneDelegate.swift in Sources */,
 				CB6A5D6A2C316FA7000BF551 /* FavoritesPageVM.swift in Sources */,
+				CB4E4ED62C3C5ABF00FAA3D3 /* LogInPageVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
