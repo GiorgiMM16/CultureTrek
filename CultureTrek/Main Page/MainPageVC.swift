@@ -11,21 +11,7 @@ class MainPageVC: UIViewController, UIGestureRecognizerDelegate {
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hex: "181A20")
-        
-        navigationItem.hidesBackButton = true
-        
-        configureTitle1()
-        configureSearchIcon()
-        configureSearchBar()
-        configureScrollView()
-        configurePageControl()
-        configureTableView()
-        viewModel.fetchMuseums()
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
-        tapGestureRecognizer.delegate = self
-        view.addGestureRecognizer(tapGestureRecognizer)
+        setUpUI()
     }
     
     // MARK: Variables
@@ -62,6 +48,23 @@ class MainPageVC: UIViewController, UIGestureRecognizerDelegate {
         tableView.backgroundColor = .clear
         return tableView
     }()
+    
+    func setUpUI() {
+        view.backgroundColor = UIColor(hex: "181A20")
+        navigationItem.hidesBackButton = true
+        configureTitle1()
+        configureSearchIcon()
+        configureSearchBar()
+        configureScrollView()
+        configurePageControl()
+        configureTableView()
+        viewModel.fetchMuseums()
+        
+        // Tap Gesture Set Up
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        tapGestureRecognizer.delegate = self
+        view.addGestureRecognizer(tapGestureRecognizer)
+    }
     
     // MARK: Scrolling Pages Set up
     private let scrollView = UIScrollView()

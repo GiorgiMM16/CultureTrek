@@ -2,6 +2,8 @@ import UIKit
 
 class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
+    // MARK: Variables and ViewModel
     @Published var cityName: String?
     var cityImageURL: String?
     let viewModel = CityMuseumsListPageVM()
@@ -50,6 +52,9 @@ class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableVie
         return label
     }()
     
+    
+    // MARK: LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "181A20")
@@ -61,6 +66,14 @@ class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableVie
     // MARK: UI Setup
     
     private func setupUI() {
+        configureCityName()
+        configureCityImageView()
+        configureFeaturedMuseumsTitls()
+        configureMuseumsTableView()
+        configureNoMuseumsLabel()
+    }
+    
+    func configureCityName() {
         if let cityName = cityName {
             cityNameTitle.text = cityName
             cityNameTitle.textAlignment = .left
@@ -72,7 +85,9 @@ class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableVie
                 cityNameTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -180)
             ])
         }
-        
+    }
+    
+    func configureCityImageView() {
         view.addSubview(cityImageView)
         cityImageView.translatesAutoresizingMaskIntoConstraints = false
         cityImageView.layer.cornerRadius = 15.0
@@ -86,14 +101,18 @@ class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableVie
         if let urlString = cityImageURL, let url = URL(string: urlString) {
             cityImageView.loadImage(from: url)
         }
-        
+    }
+    
+    func configureFeaturedMuseumsTitls() {
         view.addSubview(featuredMuseumsTitle)
         featuredMuseumsTitle.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             featuredMuseumsTitle.topAnchor.constraint(equalTo: cityImageView.bottomAnchor, constant: 35),
             featuredMuseumsTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 45)
         ])
-        
+    }
+    
+    func configureMuseumsTableView() {
         view.addSubview(museumsTableView)
         museumsTableView.backgroundColor = .clear
         museumsTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -103,7 +122,9 @@ class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableVie
             museumsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             museumsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
+    }
+    
+    func configureNoMuseumsLabel() {
         view.addSubview(noMuseumsLabel)
         noMuseumsLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -114,9 +135,14 @@ class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableVie
         noMuseumsLabel.isHidden = true
     }
     
+    
+    // MARK: Nav Bar Set Up
+    
     private func setupNavigationBar() {
         navigationController?.navigationBar.isHidden = true
     }
+    
+    // MARK: Data Fetching
     
     private func fetchMuseums() {
         guard let cityName = cityName else { return }

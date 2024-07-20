@@ -10,10 +10,15 @@ import Foundation
 import SimpleNetworking
 
 class MainPageViewModel: ObservableObject {
+    
+    // MARK: Variables
+    
     @Published var museums: [GooglePlace] = []
     @Published var errorMessage: String?
     
     private let webService = WebService()
+    
+    // MARK: Network Call
     
     func fetchMuseums() {
         let apiKey = "AIzaSyC2zWn0sqKLXITMzx_TiElnLxFuvkOaICE"

@@ -1,23 +1,24 @@
 import UIKit
 
 class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate {
+    
+    // MARK: Variables and ViewModel
     private let viewModel = CityListPageVM()
     private let tableView = UITableView()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
-    
     var isSearchExpanded = false
     var searchResults = [String]()
     
+    
+    // MARK: LifeCycle / Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        configureSearchBar()
-        configureTableView1()
-        setupTableView()
-        setupViewModel()
-        
-        // Fetch cities
-        viewModel.fetchEuropeanCities(maxRows: "20")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView1.frame = CGRect(x: 0, y: searchBar.frame.maxY + 10, width: view.frame.size.width, height: view.frame.size.height - searchBar.frame.maxY - 10)
     }
     
     // MARK: Variables
@@ -57,27 +58,22 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
         return tableView1
     }()
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView1.frame = CGRect(x: 0, y: searchBar.frame.maxY + 10, width: view.frame.size.width, height: view.frame.size.height - searchBar.frame.maxY - 10)
-    }
-    
     // MARK: UI Functions
     
     func setUpUI() {
-        setUpCityTitle()
-        configureSearchIcon()
-        setupTableView()
-        setupActivityIndicator()
         view.backgroundColor = UIColor(hex: "181A20")
-        
-        // Add tap gesture to dismiss search bar
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
-        tapGesture.delegate = self
-        view.addGestureRecognizer(tapGesture)
+        configureCityTitle()
+        configureSearchIcon()
+        setupActivityIndicator()
+        configureSearchBar()
+        configureTableView1()
+        configureTableView()
+        setupViewModel()
+        viewModel.fetchEuropeanCities(maxRows: "20") // Data Fetching
+        configureTapGesture()
     }
     
-    func setUpCityTitle() {
+    func configureCityTitle() {
         view.addSubview(cityTitle)
         cityTitle.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -118,16 +114,6 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
         view.addSubview(tableView1)
     }
     
-    @objc func searchIconTapped() {
-        isSearchExpanded.toggle()
-        
-        if isSearchExpanded {
-            expandSearchBar()
-        } else {
-            collapseSearchBar()
-        }
-    }
-    
     func expandSearchBar() {
         UIView.animate(withDuration: 0.3) {
             self.searchIcon.isHidden = true
@@ -148,6 +134,23 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    // MARK: Gestures Configure Functions
+    
+    func configureTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        tapGesture.delegate = self
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if let view = touch.view, view.isDescendant(of: tableView) || view.isDescendant(of: tableView1) {
+            return false
+        }
+        return true
+    }
+    
+    // MARK: objc Functions
+    
     @objc func viewTapped() {
         UIView.animate(withDuration: 0.3) {
             self.searchIcon.isHidden = false
@@ -159,16 +162,19 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
         self.view.endEditing(true)
     }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if let view = touch.view, view.isDescendant(of: tableView) || view.isDescendant(of: tableView1) {
-            return false
+    @objc func searchIconTapped() {
+        isSearchExpanded.toggle()
+        
+        if isSearchExpanded {
+            expandSearchBar()
+        } else {
+            collapseSearchBar()
         }
-        return true
     }
     
     // MARK: TableView Setup
     
-    private func setupTableView() {
+    private func configureTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
@@ -196,6 +202,8 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
         ])
     }
     
+    // MARK: ViewModel Set Up
+    
     private func setupViewModel() {
         viewModel.onCitiesUpdated = { [weak self] in
             DispatchQueue.main.async {
@@ -214,6 +222,8 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         activityIndicator.startAnimating()
     }
+    
+    // MARK: TableView Delegate / DataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return tableView == self.tableView ? viewModel.cities.count : 1

@@ -47,8 +47,10 @@ class ProfilePageVC: UIViewController {
         signOutButton.titleLabel?.textColor = .white
         signOutButton.layer.cornerRadius = 15.0
         signOutButton.backgroundColor = UIColor(hex: "353A40")
+        signOutButton.addTarget(self, action: #selector(signOutButtonTapped), for: .touchUpInside)
         return signOutButton
     }()
+
     
     var thankYouLabel: UIImageView = {
         var thankYouLabel = UIImageView(image: UIImage(named: "thankyou"))
@@ -114,9 +116,12 @@ class ProfilePageVC: UIViewController {
             thankYouLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10)
         ])
     }
+    
+    @objc func signOutButtonTapped() {
+        let welcomePageVC = WelcomePageVC()
+        navigationController?.pushViewController(welcomePageVC, animated: true)
+        welcomePageVC.navigationItem.hidesBackButton = true
+    }
 
-}
 
-#Preview{
-    ProfilePageVC()
 }

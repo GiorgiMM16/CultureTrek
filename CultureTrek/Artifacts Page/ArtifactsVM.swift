@@ -2,10 +2,15 @@ import Foundation
 import SimpleNetworking
 
 class ArtifactsViewModel {
+    
+    // MARK: Variables
+    
     private let webService = WebService()
     var artifacts: [Item] = []
     var onArtifactsUpdated: (() -> Void)?
     var onError: ((String) -> Void)?
+    
+    // MARK: Network Call
 
     func fetchArtifacts(for museumName: String) {
         guard let encodedMuseumName = museumName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {

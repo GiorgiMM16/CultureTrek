@@ -9,11 +9,16 @@ class CityListPageVM {
     @Published var onError: ((String) -> Void)?
     
     
+    
+    // MARK: Network Call
+    
     private var webService: WebService
 
     init(webService: WebService = WebService()) {
         self.webService = webService
     }
+    
+    // For fetching names
 
     func fetchEuropeanCities(maxRows: String) {
         let urlString = "http://api.geonames.org/searchJSON?formatted=true&continentCode=EU&featureClass=P&maxRows=\(maxRows)&lang=en&username=giorgimm19&style=full"
@@ -28,6 +33,8 @@ class CityListPageVM {
             }
         }
     }
+    
+    // for fetching images
 
     private func fetchImagesForCities() {
         let cityNames = cities.map { $0.name }

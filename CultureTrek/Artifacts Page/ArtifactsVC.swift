@@ -1,5 +1,5 @@
 //
-//  DetailsPageVC.swift
+//  ArtifactsVC.swift
 //  CultureTrek
 //
 //  Created by Giorgi Michitashvili on 6/30/24.
@@ -8,27 +8,17 @@
 import UIKit
 
 class ArtifactsViewController: UIViewController {
+    
+    // MARK: Variables and ViewModel
     private let viewModel = ArtifactsViewModel()
     private var tableView: UITableView!
-    
     var museumNameRecieved: String?
     
     
-    
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hex: "181A20")
         
-        setupViewModel()
-        viewModel.fetchArtifacts(for: museumNameRecieved ?? "Louvre")
-        fetchMuseumPhoto()
-        
-        //UI
-        configureTitle1()
-        configureFeaturedMuseumsTitle()
-        setupTableView()
-        navigationItem.hidesBackButton = true
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
     }
     
@@ -61,6 +51,24 @@ class ArtifactsViewController: UIViewController {
     
     // MARK: UI Set Up
     
+    func setUpUI() {
+        view.backgroundColor = UIColor(hex: "181A20")
+        //Data Fetching
+        setupViewModel()
+        viewModel.fetchArtifacts(for: museumNameRecieved ?? "Louvre")
+        fetchMuseumPhoto()
+        
+        // UI Set Up
+        configureTitle1()
+        configureMuseumImageView()
+        configureFeaturedMuseumsTitle()
+        setupTableView()
+        
+        
+        navigationItem.hidesBackButton = true
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+    
     func configureTitle1() {
         view.addSubview(title1)
         title1.text = museumNameRecieved
@@ -71,7 +79,9 @@ class ArtifactsViewController: UIViewController {
             title1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26),
             title1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26)
         ])
-        
+    }
+    
+    func configureMuseumImageView() {
         view.addSubview(museumImageView)
         museumImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -156,10 +166,7 @@ extension ArtifactsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArtifactsTableViewCell.identifier, for: indexPath) as! ArtifactsTableViewCell
         let artifact = viewModel.artifacts[indexPath.row]
-        
-        // Configure the cell using artifact data
         cell.configure(with: artifact.title.last, imageURLString: artifact.edmIsShownBy?.last)
-        
         return cell
     }
 }

@@ -40,7 +40,7 @@ class WelcomePageVC: UIViewController {
         logInButton.titleLabel?.font = UIFont(name: "FiraCode-Regular", size: 18)
         logInButton.layer.cornerRadius = 18.0
         logInButton.backgroundColor = UIColor(hex: "353A40")
-        logInButton.addTarget(self, action: #selector(showLogInPageView), for: .touchUpInside)
+        logInButton.addTarget(self, action: #selector(showLogInPageView), for: .touchUpInside) // Ignored this Error (the edit it suggests disables functionality)
         return logInButton
     }()
     
@@ -50,7 +50,7 @@ class WelcomePageVC: UIViewController {
         registerButton.layer.cornerRadius = 18.0
         registerButton.backgroundColor = UIColor(hex: "353A40")
         registerButton.titleLabel?.font = UIFont(name: "FiraCode-Regular", size: 18)
-        registerButton.addTarget(self, action: #selector(showRegisterPageView), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(showRegisterPageView), for: .touchUpInside) // Ignored this Error (the edit it suggests disables functionality)
         return registerButton
     }()
     

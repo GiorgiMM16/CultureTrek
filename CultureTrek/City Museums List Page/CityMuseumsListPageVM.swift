@@ -2,10 +2,13 @@ import Foundation
 
 class CityMuseumsListPageVM {
     
-    var museumNames: [String] = []
     
+    // MARK: Variables
+    var museumNames: [String] = []
     var onDataUpdated: (() -> Void)?
     var onError: ((Error) -> Void)?
+    
+    // MARK: Functions
     
     func fetchMuseums(for cityName: String) {
         let urlString = "https://api.foursquare.com/v3/places/search"
