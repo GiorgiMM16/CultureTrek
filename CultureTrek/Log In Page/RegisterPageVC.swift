@@ -1,15 +1,23 @@
+//
+//  RegisterPageVC.swift
+//  CultureTrek
+//
+//  Created by Giorgi Michitashvili on 7/12/24.
+//
+
 import UIKit
 import SwiftUI
 import Combine
 
-class LogInPageVC: UIViewController, LogInPageViewDelegate {
+class RegisterPageVC: UIViewController, RegisterViewPageDelegate {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let viewModel = LogInViewModel()
+        let viewModel = RegisterPageVM()
         viewModel.delegate = self
         
-        let swiftUIView = LogInPageView(viewModel: viewModel)
+        let swiftUIView = RegisterPageView(viewModel: viewModel)
         let hostingController = UIHostingController(rootView: swiftUIView)
         
         addChild(hostingController)
@@ -27,3 +35,5 @@ class LogInPageVC: UIViewController, LogInPageViewDelegate {
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 }
+
+

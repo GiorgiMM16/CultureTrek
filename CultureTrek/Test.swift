@@ -1,6 +1,6 @@
 import UIKit
 
-class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate {
+class CityCity: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     private let viewModel = CityListPageVM()
     private let tableView = UITableView()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
@@ -23,7 +23,7 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: Variables
     
     var cityTitle: UILabel = {
-        let cityTitle = UILabel()
+        var cityTitle = UILabel()
         cityTitle.text = "Cities"
         cityTitle.font = UIFont(name: "FiraCode-Regular", size: 35)
         cityTitle.textColor = .white
@@ -31,29 +31,28 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }()
     
     var searchIcon: UIImageView = {
-        let searchIcon = UIImageView()
+        var searchIcon = UIImageView()
         searchIcon.image = UIImage(systemName: "magnifyingglass")
         searchIcon.tintColor = .white
-        searchIcon.isUserInteractionEnabled = true
         return searchIcon
     }()
     
     var searchBar: UITextField = {
-        let searchBar = UITextField()
+        var searchBar = UITextField()
         searchBar.placeholder = "Search"
         searchBar.backgroundColor = .gray
         searchBar.layer.cornerRadius = 12.0
         searchBar.alpha = 0
         searchBar.textColor = .black
         searchBar.clearButtonMode = .whileEditing
+        searchBar.addTarget(self, action: #selector(searchBarTextChanged), for: .editingChanged)
         return searchBar
     }()
     
     var tableView1: UITableView = {
-        let tableView1 = UITableView()
+        var tableView1 = UITableView()
         tableView1.isHidden = true
         tableView1.backgroundColor = .clear
-        tableView1.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return tableView1
     }()
     
@@ -97,10 +96,10 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(searchIconTapped))
         searchIcon.addGestureRecognizer(tapGesture)
+        searchIcon.isUserInteractionEnabled = true
     }
     
     func configureSearchBar() {
-        searchBar.delegate = self
         view.addSubview(searchBar)
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -114,7 +113,9 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
     private func configureTableView1() {
         tableView1.delegate = self
         tableView1.dataSource = self
+        tableView1.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView1.translatesAutoresizingMaskIntoConstraints = false
+        tableView1.backgroundColor = .clear
         view.addSubview(tableView1)
     }
     
@@ -216,11 +217,24 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return tableView == self.tableView ? viewModel.cities.count : 1
+        return viewModel.cities.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableView == self.tableView ? 1 : searchResults.count
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
+        let city = viewModel.cities[indexPath.section]
+        cell.configure(with: city.imageUrl, cityName: city.name, countryName: city.countryName)
+        cell.backgroundColor = .clear
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 28
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -229,52 +243,32 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
         return footerView
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == self.tableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
-            let city = viewModel.cities[indexPath.section]
-            cell.configure(with: city.imageUrl, cityName: city.name, countryName: city.countryName)
-            
-            cell.backgroundColor = .clear
-            cell.selectionStyle = .none
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = searchResults[indexPath.row]
-            return cell
-        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let city = viewModel.cities[indexPath.section]
+        let cityMuseumsVC = CityMuseumsListPageVC()
+        cityMuseumsVC.cityName = city.name
+        cityMuseumsVC.cityImageURL = city.imageUrl
+        navigationController?.pushViewController(cityMuseumsVC, animated: true)
+    }
+    
+    // MARK: Second TableView
+    
+    func tableView1(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResults.count
     }
 
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return tableView == self.tableView ? 28 : 0
+    func tableView1(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView1.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = searchResults[indexPath.row]
+        return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == tableView1 {
-            let city = viewModel.cities[indexPath.section]
-                    let cityMuseumsVC = CityMuseumsListPageVC()
-                    cityMuseumsVC.cityName = city.name
-                    cityMuseumsVC.cityImageURL = city.imageUrl
-                    navigationController?.pushViewController(cityMuseumsVC, animated: true)
-        }
-    }
-    
-    // MARK: UITextFieldDelegate
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentText = (textField.text ?? "") as NSString
-        let updatedText = currentText.replacingCharacters(in: range, with: string)
-        filterCities(with: updatedText)
-        return true
-    }
-    
-    func filterCities(with searchText: String) {
+    @objc func searchBarTextChanged(_ textField: UITextField) {
+        let searchText = textField.text ?? ""
         if searchText.isEmpty {
-            searchResults = []
+            searchResults = viewModel.cities.map { $0.name }
         } else {
-            searchResults = viewModel.cities.filter { city in
-                city.name.lowercased().contains(searchText.lowercased())
-            }.map { $0.name }
+            searchResults = viewModel.cities.filter { $0.name.lowercased().contains(searchText.lowercased()) }.map { $0.name }
         }
         tableView1.reloadData()
     }

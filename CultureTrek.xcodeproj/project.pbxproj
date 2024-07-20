@@ -7,20 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB21E5CE2C4519E3002F5CC9 /* MuseumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB21E5CD2C4519E3002F5CC9 /* MuseumTableViewCell.swift */; };
+		CB31C30D2C428BC400C96C61 /* LogInPageViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31C30C2C428BC400C96C61 /* LogInPageViewDelegate.swift */; };
+		CB31C30F2C42CACC00C96C61 /* RegisterViewPageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31C30E2C42CACC00C96C61 /* RegisterViewPageDelegate.swift */; };
+		CB31C3122C4314B800C96C61 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31C3112C4314B800C96C61 /* TableViewCell.swift */; };
+		CB31C3142C43161500C96C61 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31C3132C43161500C96C61 /* Model.swift */; };
 		CB4E4ED12C3C5A9900FAA3D3 /* WelcomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4E4ED02C3C5A9900FAA3D3 /* WelcomePageVC.swift */; };
 		CB4E4ED32C3C5AAA00FAA3D3 /* WelcomePageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4E4ED22C3C5AAA00FAA3D3 /* WelcomePageVM.swift */; };
 		CB4E4ED62C3C5ABF00FAA3D3 /* LogInPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4E4ED52C3C5ABF00FAA3D3 /* LogInPageVM.swift */; };
-		CB4E4ED82C3C5AD200FAA3D3 /* LogInPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4E4ED72C3C5AD200FAA3D3 /* LogInPageVC.swift */; };
-		CB4E4EDB2C3C5B1500FAA3D3 /* RegisterPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4E4EDA2C3C5B1500FAA3D3 /* RegisterPageVC.swift */; };
 		CB4E4EDD2C3C5B2700FAA3D3 /* RegisterPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4E4EDC2C3C5B2700FAA3D3 /* RegisterPageVM.swift */; };
+		CB4E4EDF2C3C803800FAA3D3 /* UiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4E4EDE2C3C803800FAA3D3 /* UiColor.swift */; };
+		CB4E4EE22C3C813C00FAA3D3 /* FrederickatheGreat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB4E4EE12C3C813C00FAA3D3 /* FrederickatheGreat-Regular.ttf */; };
+		CB59173E2C3DCCAD00289B28 /* RegisterPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59173D2C3DCCAD00289B28 /* RegisterPageView.swift */; };
 		CB6A5D362C316CEC000BF551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D352C316CEC000BF551 /* AppDelegate.swift */; };
 		CB6A5D382C316CEC000BF551 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D372C316CEC000BF551 /* SceneDelegate.swift */; };
 		CB6A5D3F2C316CED000BF551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB6A5D3E2C316CED000BF551 /* Assets.xcassets */; };
 		CB6A5D422C316CED000BF551 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CB6A5D412C316CED000BF551 /* Base */; };
 		CB6A5D622C316EFD000BF551 /* MainPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D612C316EFD000BF551 /* MainPageVC.swift */; };
-		CB6A5D662C316F79000BF551 /* MainPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D652C316F79000BF551 /* MainPageVM.swift */; };
-		CB6A5D682C316F9B000BF551 /* FavoritesPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D672C316F9B000BF551 /* FavoritesPageVC.swift */; };
-		CB6A5D6A2C316FA7000BF551 /* FavoritesPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D692C316FA7000BF551 /* FavoritesPageVM.swift */; };
 		CB6A5D6C2C316FB3000BF551 /* SearchPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D6B2C316FB3000BF551 /* SearchPageVC.swift */; };
 		CB6A5D6E2C316FC5000BF551 /* SearchPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D6D2C316FC5000BF551 /* SearchPageVM.swift */; };
 		CB6A5D702C316FD3000BF551 /* DetailsPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D6F2C316FD3000BF551 /* DetailsPageVC.swift */; };
@@ -30,15 +33,32 @@
 		CB6A5D782C31702F000BF551 /* CityMuseumsListPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D772C31702F000BF551 /* CityMuseumsListPageVC.swift */; };
 		CB6A5D7A2C31703E000BF551 /* CityMuseumsListPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6A5D792C31703E000BF551 /* CityMuseumsListPageVM.swift */; };
 		CB6A5D7D2C31711A000BF551 /* SimpleNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = CB6A5D7C2C31711A000BF551 /* SimpleNetworking */; };
+		CB8F60D62C43D9670070468F /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F60D52C43D9670070468F /* UIImageView.swift */; };
+		CBB4B5752C41496500B08562 /* RegisterPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB4B5742C41496500B08562 /* RegisterPageVC.swift */; };
+		CBB4B5772C414CA600B08562 /* LogInPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB4B5762C414CA600B08562 /* LogInPageView.swift */; };
+		CBB4B5792C4152B400B08562 /* LogInPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB4B5782C4152B400B08562 /* LogInPageVC.swift */; };
+		CBB4B57C2C4186FE00B08562 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB4B57B2C4186FE00B08562 /* CustomTabBar.swift */; };
+		CBB4B57F2C41893500B08562 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB4B57E2C41893500B08562 /* CustomTabBarController.swift */; };
+		CBC2955E2C4806F700B1C7F9 /* ArtifactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2955D2C4806F700B1C7F9 /* ArtifactTableViewCell.swift */; };
+		CBC778412C4B8EFF00021D9E /* MainPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC778402C4B8EFF00021D9E /* MainPageViewModel.swift */; };
+		CBC778432C4C28B000021D9E /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC778422C4C28B000021D9E /* Test.swift */; };
+		CBC778452C4C2ADA00021D9E /* ProfilePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC778442C4C2ADA00021D9E /* ProfilePageVC.swift */; };
+		CBF9AB942C3FB8DB004CFBC0 /* FiraCode-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBF9AB932C3FB8DB004CFBC0 /* FiraCode-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB21E5CD2C4519E3002F5CC9 /* MuseumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumTableViewCell.swift; sourceTree = "<group>"; };
+		CB31C30C2C428BC400C96C61 /* LogInPageViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPageViewDelegate.swift; sourceTree = "<group>"; };
+		CB31C30E2C42CACC00C96C61 /* RegisterViewPageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewPageDelegate.swift; sourceTree = "<group>"; };
+		CB31C3112C4314B800C96C61 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		CB31C3132C43161500C96C61 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CB4E4ED02C3C5A9900FAA3D3 /* WelcomePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageVC.swift; sourceTree = "<group>"; };
 		CB4E4ED22C3C5AAA00FAA3D3 /* WelcomePageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageVM.swift; sourceTree = "<group>"; };
 		CB4E4ED52C3C5ABF00FAA3D3 /* LogInPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPageVM.swift; sourceTree = "<group>"; };
-		CB4E4ED72C3C5AD200FAA3D3 /* LogInPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPageVC.swift; sourceTree = "<group>"; };
-		CB4E4EDA2C3C5B1500FAA3D3 /* RegisterPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPageVC.swift; sourceTree = "<group>"; };
 		CB4E4EDC2C3C5B2700FAA3D3 /* RegisterPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPageVM.swift; sourceTree = "<group>"; };
+		CB4E4EDE2C3C803800FAA3D3 /* UiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiColor.swift; sourceTree = "<group>"; };
+		CB4E4EE12C3C813C00FAA3D3 /* FrederickatheGreat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FrederickatheGreat-Regular.ttf"; sourceTree = "<group>"; };
+		CB59173D2C3DCCAD00289B28 /* RegisterPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPageView.swift; sourceTree = "<group>"; };
 		CB6A5D322C316CEC000BF551 /* CultureTrek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CultureTrek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6A5D352C316CEC000BF551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB6A5D372C316CEC000BF551 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,9 +67,6 @@
 		CB6A5D432C316CED000BF551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB6A5D562C316D0C000BF551 /* CultureTrek copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CultureTrek copy-Info.plist"; path = "/Users/giorgimichitashvili/Desktop/Developer/CultureTrek/CultureTrek/CultureTrek copy-Info.plist"; sourceTree = "<absolute>"; };
 		CB6A5D612C316EFD000BF551 /* MainPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageVC.swift; sourceTree = "<group>"; };
-		CB6A5D652C316F79000BF551 /* MainPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageVM.swift; sourceTree = "<group>"; };
-		CB6A5D672C316F9B000BF551 /* FavoritesPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPageVC.swift; sourceTree = "<group>"; };
-		CB6A5D692C316FA7000BF551 /* FavoritesPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPageVM.swift; sourceTree = "<group>"; };
 		CB6A5D6B2C316FB3000BF551 /* SearchPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageVC.swift; sourceTree = "<group>"; };
 		CB6A5D6D2C316FC5000BF551 /* SearchPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageVM.swift; sourceTree = "<group>"; };
 		CB6A5D6F2C316FD3000BF551 /* DetailsPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPageVC.swift; sourceTree = "<group>"; };
@@ -58,6 +75,17 @@
 		CB6A5D752C316FFC000BF551 /* CityListPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListPageVM.swift; sourceTree = "<group>"; };
 		CB6A5D772C31702F000BF551 /* CityMuseumsListPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityMuseumsListPageVC.swift; sourceTree = "<group>"; };
 		CB6A5D792C31703E000BF551 /* CityMuseumsListPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityMuseumsListPageVM.swift; sourceTree = "<group>"; };
+		CB8F60D52C43D9670070468F /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		CBB4B5742C41496500B08562 /* RegisterPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisterPageVC.swift; path = "CultureTrek/Log In Page/RegisterPageVC.swift"; sourceTree = SOURCE_ROOT; };
+		CBB4B5762C414CA600B08562 /* LogInPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPageView.swift; sourceTree = "<group>"; };
+		CBB4B5782C4152B400B08562 /* LogInPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPageVC.swift; sourceTree = "<group>"; };
+		CBB4B57B2C4186FE00B08562 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		CBB4B57E2C41893500B08562 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		CBC2955D2C4806F700B1C7F9 /* ArtifactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactTableViewCell.swift; sourceTree = "<group>"; };
+		CBC778402C4B8EFF00021D9E /* MainPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewModel.swift; sourceTree = "<group>"; };
+		CBC778422C4C28B000021D9E /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		CBC778442C4C2ADA00021D9E /* ProfilePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageVC.swift; sourceTree = "<group>"; };
+		CBF9AB932C3FB8DB004CFBC0 /* FiraCode-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraCode-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +100,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB31C3102C43149800C96C61 /* Reusable Components */ = {
+			isa = PBXGroup;
+			children = (
+				CB31C3112C4314B800C96C61 /* TableViewCell.swift */,
+				CB8F60D52C43D9670070468F /* UIImageView.swift */,
+				CB21E5CD2C4519E3002F5CC9 /* MuseumTableViewCell.swift */,
+				CBC2955D2C4806F700B1C7F9 /* ArtifactTableViewCell.swift */,
+			);
+			path = "Reusable Components";
+			sourceTree = "<group>";
+		};
 		CB4E4ECF2C3C5A7100FAA3D3 /* Welcome Page */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,7 +124,9 @@
 			isa = PBXGroup;
 			children = (
 				CB4E4ED52C3C5ABF00FAA3D3 /* LogInPageVM.swift */,
-				CB4E4ED72C3C5AD200FAA3D3 /* LogInPageVC.swift */,
+				CBB4B5762C414CA600B08562 /* LogInPageView.swift */,
+				CBB4B5782C4152B400B08562 /* LogInPageVC.swift */,
+				CB31C30C2C428BC400C96C61 /* LogInPageViewDelegate.swift */,
 			);
 			path = "Log In Page";
 			sourceTree = "<group>";
@@ -93,10 +134,21 @@
 		CB4E4ED92C3C5B0400FAA3D3 /* Register Page */ = {
 			isa = PBXGroup;
 			children = (
-				CB4E4EDA2C3C5B1500FAA3D3 /* RegisterPageVC.swift */,
 				CB4E4EDC2C3C5B2700FAA3D3 /* RegisterPageVM.swift */,
+				CB59173D2C3DCCAD00289B28 /* RegisterPageView.swift */,
+				CBB4B5742C41496500B08562 /* RegisterPageVC.swift */,
+				CB31C30E2C42CACC00C96C61 /* RegisterViewPageDelegate.swift */,
 			);
 			path = "Register Page";
+			sourceTree = "<group>";
+		};
+		CB4E4EE02C3C812E00FAA3D3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CB4E4EE12C3C813C00FAA3D3 /* FrederickatheGreat-Regular.ttf */,
+				CBF9AB932C3FB8DB004CFBC0 /* FiraCode-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		CB6A5D292C316CEB000BF551 = {
@@ -119,6 +171,9 @@
 		CB6A5D342C316CEC000BF551 /* CultureTrek */ = {
 			isa = PBXGroup;
 			children = (
+				CB31C3102C43149800C96C61 /* Reusable Components */,
+				CBB4B57D2C41891A00B08562 /* Tab Bar */,
+				CB4E4EE02C3C812E00FAA3D3 /* Fonts */,
 				CB4E4ED92C3C5B0400FAA3D3 /* Register Page */,
 				CB4E4ED42C3C5AB100FAA3D3 /* Log In Page */,
 				CB4E4ECF2C3C5A7100FAA3D3 /* Welcome Page */,
@@ -130,6 +185,8 @@
 				CB6A5D582C316DBD000BF551 /* Favorites Page */,
 				CB6A5D572C316DB4000BF551 /* Main Page */,
 				CB6A5D432C316CED000BF551 /* Info.plist */,
+				CB31C3132C43161500C96C61 /* Model.swift */,
+				CBC778422C4C28B000021D9E /* Test.swift */,
 			);
 			path = CultureTrek;
 			sourceTree = "<group>";
@@ -138,7 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				CB6A5D612C316EFD000BF551 /* MainPageVC.swift */,
-				CB6A5D652C316F79000BF551 /* MainPageVM.swift */,
+				CBC778402C4B8EFF00021D9E /* MainPageViewModel.swift */,
 			);
 			path = "Main Page";
 			sourceTree = "<group>";
@@ -146,8 +203,7 @@
 		CB6A5D582C316DBD000BF551 /* Favorites Page */ = {
 			isa = PBXGroup;
 			children = (
-				CB6A5D672C316F9B000BF551 /* FavoritesPageVC.swift */,
-				CB6A5D692C316FA7000BF551 /* FavoritesPageVM.swift */,
+				CBC778442C4C2ADA00021D9E /* ProfilePageVC.swift */,
 			);
 			path = "Favorites Page";
 			sourceTree = "<group>";
@@ -195,8 +251,18 @@
 				CB6A5D352C316CEC000BF551 /* AppDelegate.swift */,
 				CB6A5D372C316CEC000BF551 /* SceneDelegate.swift */,
 				CB6A5D402C316CED000BF551 /* LaunchScreen.storyboard */,
+				CB4E4EDE2C3C803800FAA3D3 /* UiColor.swift */,
 			);
 			path = Supporting;
+			sourceTree = "<group>";
+		};
+		CBB4B57D2C41891A00B08562 /* Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+				CBB4B57B2C4186FE00B08562 /* CustomTabBar.swift */,
+				CBB4B57E2C41893500B08562 /* CustomTabBarController.swift */,
+			);
+			path = "Tab Bar";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +329,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBF9AB942C3FB8DB004CFBC0 /* FiraCode-Regular.ttf in Resources */,
 				CB6A5D3F2C316CED000BF551 /* Assets.xcassets in Resources */,
 				CB6A5D422C316CED000BF551 /* Base in Resources */,
+				CB4E4EE22C3C813C00FAA3D3 /* FrederickatheGreat-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,22 +346,34 @@
 				CB4E4EDD2C3C5B2700FAA3D3 /* RegisterPageVM.swift in Sources */,
 				CB6A5D742C316FF0000BF551 /* CityListPageVC.swift in Sources */,
 				CB6A5D702C316FD3000BF551 /* DetailsPageVC.swift in Sources */,
-				CB6A5D682C316F9B000BF551 /* FavoritesPageVC.swift in Sources */,
-				CB6A5D662C316F79000BF551 /* MainPageVM.swift in Sources */,
-				CB4E4EDB2C3C5B1500FAA3D3 /* RegisterPageVC.swift in Sources */,
+				CBB4B5792C4152B400B08562 /* LogInPageVC.swift in Sources */,
+				CB31C30D2C428BC400C96C61 /* LogInPageViewDelegate.swift in Sources */,
+				CBC778432C4C28B000021D9E /* Test.swift in Sources */,
+				CB31C3122C4314B800C96C61 /* TableViewCell.swift in Sources */,
+				CBB4B57C2C4186FE00B08562 /* CustomTabBar.swift in Sources */,
+				CBC2955E2C4806F700B1C7F9 /* ArtifactTableViewCell.swift in Sources */,
 				CB6A5D7A2C31703E000BF551 /* CityMuseumsListPageVM.swift in Sources */,
 				CB6A5D782C31702F000BF551 /* CityMuseumsListPageVC.swift in Sources */,
 				CB6A5D6C2C316FB3000BF551 /* SearchPageVC.swift in Sources */,
-				CB4E4ED82C3C5AD200FAA3D3 /* LogInPageVC.swift in Sources */,
 				CB6A5D722C316FDE000BF551 /* DetailsPageVM.swift in Sources */,
 				CB6A5D6E2C316FC5000BF551 /* SearchPageVM.swift in Sources */,
+				CBB4B57F2C41893500B08562 /* CustomTabBarController.swift in Sources */,
+				CB59173E2C3DCCAD00289B28 /* RegisterPageView.swift in Sources */,
+				CB8F60D62C43D9670070468F /* UIImageView.swift in Sources */,
 				CB6A5D622C316EFD000BF551 /* MainPageVC.swift in Sources */,
 				CB4E4ED32C3C5AAA00FAA3D3 /* WelcomePageVM.swift in Sources */,
+				CB21E5CE2C4519E3002F5CC9 /* MuseumTableViewCell.swift in Sources */,
 				CB6A5D762C316FFC000BF551 /* CityListPageVM.swift in Sources */,
+				CBC778452C4C2ADA00021D9E /* ProfilePageVC.swift in Sources */,
 				CB4E4ED12C3C5A9900FAA3D3 /* WelcomePageVC.swift in Sources */,
 				CB6A5D362C316CEC000BF551 /* AppDelegate.swift in Sources */,
 				CB6A5D382C316CEC000BF551 /* SceneDelegate.swift in Sources */,
-				CB6A5D6A2C316FA7000BF551 /* FavoritesPageVM.swift in Sources */,
+				CBB4B5772C414CA600B08562 /* LogInPageView.swift in Sources */,
+				CBC778412C4B8EFF00021D9E /* MainPageViewModel.swift in Sources */,
+				CB31C30F2C42CACC00C96C61 /* RegisterViewPageDelegate.swift in Sources */,
+				CB31C3142C43161500C96C61 /* Model.swift in Sources */,
+				CB4E4EDF2C3C803800FAA3D3 /* UiColor.swift in Sources */,
+				CBB4B5752C41496500B08562 /* RegisterPageVC.swift in Sources */,
 				CB4E4ED62C3C5ABF00FAA3D3 /* LogInPageVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
