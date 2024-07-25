@@ -1,16 +1,14 @@
 import UIKit
 
 class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    
-    // MARK: Variables and ViewModel
-    @Published var cityName: String?
+
+    // MARK: - Variables and ViewModel
+    var cityName: String?
     var cityImageURL: String?
-    let viewModel = CityMuseumsListPageVM()
+    private let viewModel = CityMuseumsListPageVM()
     
-    // MARK: UI Components
-    
-    lazy var cityNameTitle: UILabel = {
+    // MARK: - UI Components
+    private lazy var cityNameTitle: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont(name: "FiraCode-Regular", size: 35)
@@ -18,23 +16,24 @@ class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableVie
         return label
     }()
     
-    lazy var cityImageView: UIImageView = {
+    private lazy var cityImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 15.0
         return imageView
     }()
     
-    var featuredMuseumsTitle: UILabel = {
-        var featuredMuseumsTitle = UILabel()
-        featuredMuseumsTitle.text = "Featured Museums"
-        featuredMuseumsTitle.font = UIFont(name: "FiraCode-Regular", size: 30)
-        featuredMuseumsTitle.textAlignment = .center
-        featuredMuseumsTitle.textColor = .white
-        return featuredMuseumsTitle
+    private lazy var featuredMuseumsTitle: UILabel = {
+        let label = UILabel()
+        label.text = "Featured Museums"
+        label.font = UIFont(name: "FiraCode-Regular", size: 30)
+        label.textAlignment = .center
+        label.textColor = .white
+        return label
     }()
     
-    lazy var museumsTableView: UITableView = {
+    private lazy var museumsTableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
@@ -44,17 +43,16 @@ class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableVie
         return tableView
     }()
     
-    lazy var noMuseumsLabel: UILabel = {
+    private lazy var noMuseumsLabel: UILabel = {
         let label = UILabel()
         label.text = "No museums found"
         label.textColor = .white
         label.textAlignment = .center
+        label.isHidden = true
         return label
     }()
     
-    
-    // MARK: LifeCycle
-    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "181A20")
@@ -63,34 +61,34 @@ class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableVie
         fetchMuseums()
     }
     
-    // MARK: UI Setup
-    
+    // MARK: - UI Setup
     private func setupUI() {
+        view.addSubview(cityNameTitle)
+        view.addSubview(cityImageView)
+        view.addSubview(featuredMuseumsTitle)
+        view.addSubview(museumsTableView)
+        view.addSubview(noMuseumsLabel)
+        
         configureCityName()
         configureCityImageView()
-        configureFeaturedMuseumsTitls()
+        configureFeaturedMuseumsTitle()
         configureMuseumsTableView()
         configureNoMuseumsLabel()
     }
     
-    func configureCityName() {
-        if let cityName = cityName {
-            cityNameTitle.text = cityName
-            cityNameTitle.textAlignment = .left
-            view.addSubview(cityNameTitle)
-            cityNameTitle.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                cityNameTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 65),
-                cityNameTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 19),
-                cityNameTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -180)
-            ])
-        }
+    private func configureCityName() {
+        cityNameTitle.text = cityName
+        cityNameTitle.textAlignment = .left
+        cityNameTitle.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            cityNameTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 65),
+            cityNameTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 19),
+            cityNameTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -180)
+        ])
     }
     
-    func configureCityImageView() {
-        view.addSubview(cityImageView)
+    private func configureCityImageView() {
         cityImageView.translatesAutoresizingMaskIntoConstraints = false
-        cityImageView.layer.cornerRadius = 15.0
         NSLayoutConstraint.activate([
             cityImageView.topAnchor.constraint(equalTo: cityNameTitle.bottomAnchor, constant: 25),
             cityImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -103,8 +101,7 @@ class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    func configureFeaturedMuseumsTitls() {
-        view.addSubview(featuredMuseumsTitle)
+    private func configureFeaturedMuseumsTitle() {
         featuredMuseumsTitle.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             featuredMuseumsTitle.topAnchor.constraint(equalTo: cityImageView.bottomAnchor, constant: 35),
@@ -112,9 +109,7 @@ class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableVie
         ])
     }
     
-    func configureMuseumsTableView() {
-        view.addSubview(museumsTableView)
-        museumsTableView.backgroundColor = .clear
+    private func configureMuseumsTableView() {
         museumsTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             museumsTableView.topAnchor.constraint(equalTo: featuredMuseumsTitle.bottomAnchor, constant: 20),
@@ -124,36 +119,35 @@ class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableVie
         ])
     }
     
-    func configureNoMuseumsLabel() {
-        view.addSubview(noMuseumsLabel)
+    private func configureNoMuseumsLabel() {
         noMuseumsLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             noMuseumsLabel.centerXAnchor.constraint(equalTo: museumsTableView.centerXAnchor),
             noMuseumsLabel.centerYAnchor.constraint(equalTo: museumsTableView.centerYAnchor)
         ])
-        
-        noMuseumsLabel.isHidden = true
     }
     
-    
-    // MARK: Nav Bar Set Up
-    
+    // MARK: - Nav Bar Setup
     private func setupNavigationBar() {
         navigationController?.navigationBar.isHidden = true
     }
     
-    // MARK: Data Fetching
-    
+    // MARK: - Data Fetching
     private func fetchMuseums() {
         guard let cityName = cityName else { return }
-        
         
         viewModel.fetchMuseums(for: cityName)
         
         viewModel.onDataUpdated = { [weak self] in
             DispatchQueue.main.async {
-                self?.noMuseumsLabel.isHidden = true
-                self?.museumsTableView.reloadData()
+                if self?.viewModel.museumNames.isEmpty ?? true {
+                    self?.noMuseumsLabel.isHidden = false
+                    self?.museumsTableView.isHidden = true
+                } else {
+                    self?.noMuseumsLabel.isHidden = true
+                    self?.museumsTableView.isHidden = false
+                    self?.museumsTableView.reloadData()
+                }
             }
         }
         
@@ -161,12 +155,12 @@ class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableVie
             DispatchQueue.main.async {
                 print("Error fetching museums: \(error.localizedDescription)")
                 self?.noMuseumsLabel.isHidden = false
+                self?.museumsTableView.isHidden = true
             }
         }
     }
     
-    // MARK: UITableViewDataSource
-    
+    // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.museumNames.count
     }
@@ -179,16 +173,19 @@ class CityMuseumsListPageVC: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
-    // MARK: UITableViewDelegate
-    
+    // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let museumName = viewModel.museumNames[indexPath.row]
-        let ArtifactVC = ArtifactsViewController()
-        ArtifactVC.museumNameRecieved = museumName
-        navigationController?.pushViewController(ArtifactVC, animated: true)
+        let artifactsVC = ArtifactsViewController()
+        artifactsVC.museumNameReceived = museumName
+        navigationController?.pushViewController(artifactsVC, animated: true)
     }
+}
+
+#Preview {
+    CityMuseumsListPageVC()
 }

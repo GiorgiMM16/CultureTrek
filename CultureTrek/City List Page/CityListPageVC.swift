@@ -9,7 +9,6 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
     var isSearchExpanded = false
     var searchResults = [String]()
     
-    
     // MARK: LifeCycle / Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,45 +20,43 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView1.frame = CGRect(x: 0, y: searchBar.frame.maxY + 10, width: view.frame.size.width, height: view.frame.size.height - searchBar.frame.maxY - 10)
     }
     
-    // MARK: Variables
-    
+    // MARK: UI Elements
     var cityTitle: UILabel = {
-        let cityTitle = UILabel()
-        cityTitle.text = "Cities"
-        cityTitle.font = UIFont(name: "FiraCode-Regular", size: 35)
-        cityTitle.textColor = .white
-        return cityTitle
+        let label = UILabel()
+        label.text = "Cities"
+        label.font = UIFont(name: "FiraCode-Regular", size: 35)
+        label.textColor = .white
+        return label
     }()
     
     var searchIcon: UIImageView = {
-        let searchIcon = UIImageView()
-        searchIcon.image = UIImage(systemName: "magnifyingglass")
-        searchIcon.tintColor = .white
-        searchIcon.isUserInteractionEnabled = true
-        return searchIcon
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "magnifyingglass")
+        imageView.tintColor = .white
+        imageView.isUserInteractionEnabled = true
+        return imageView
     }()
     
     var searchBar: UITextField = {
-        let searchBar = UITextField()
-        searchBar.placeholder = "Search"
-        searchBar.backgroundColor = .gray
-        searchBar.layer.cornerRadius = 12.0
-        searchBar.alpha = 0
-        searchBar.textColor = .black
-        searchBar.clearButtonMode = .whileEditing
-        return searchBar
+        let textField = UITextField()
+        textField.placeholder = "Search"
+        textField.backgroundColor = .gray
+        textField.layer.cornerRadius = 12.0
+        textField.alpha = 0
+        textField.textColor = .black
+        textField.clearButtonMode = .whileEditing
+        return textField
     }()
     
     var tableView1: UITableView = {
-        let tableView1 = UITableView()
-        tableView1.isHidden = true
-        tableView1.backgroundColor = .clear
-        tableView1.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        return tableView1
+        let tableView = UITableView()
+        tableView.isHidden = true
+        tableView.backgroundColor = .clear
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        return tableView
     }()
     
-    // MARK: UI Functions
-    
+    // MARK: UI Setup
     func setUpUI() {
         view.backgroundColor = UIColor(hex: "181A20")
         configureCityTitle()
@@ -69,7 +66,7 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
         configureTableView1()
         configureTableView()
         setupViewModel()
-        viewModel.fetchEuropeanCities(maxRows: "20") // Data Fetching
+        viewModel.fetchEuropeanCities(maxRows: "20")
         configureTapGesture()
     }
     
@@ -134,8 +131,7 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-    // MARK: Gestures Configure Functions
-    
+    // MARK: Gestures Configuration
     func configureTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         tapGesture.delegate = self
@@ -150,7 +146,6 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // MARK: objc Functions
-    
     @objc func viewTapped() {
         UIView.animate(withDuration: 0.3) {
             self.searchIcon.isHidden = false
@@ -164,7 +159,6 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @objc func searchIconTapped() {
         isSearchExpanded.toggle()
-        
         if isSearchExpanded {
             expandSearchBar()
         } else {
@@ -173,7 +167,6 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // MARK: TableView Setup
-    
     private func configureTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -192,7 +185,6 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // MARK: Activity Indicator Setup
-    
     private func setupActivityIndicator() {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(activityIndicator)
@@ -203,7 +195,6 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // MARK: ViewModel Set Up
-    
     private func setupViewModel() {
         viewModel.onCitiesUpdated = { [weak self] in
             DispatchQueue.main.async {
@@ -224,7 +215,6 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // MARK: TableView Delegate / DataSource
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return tableView == self.tableView ? viewModel.cities.count : 1
     }
@@ -251,41 +241,43 @@ class CityListPageVC: UIViewController, UITableViewDataSource, UITableViewDelega
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = searchResults[indexPath.row]
+            cell.backgroundColor = .gray
+            cell.layer.cornerRadius = 12
+            cell.layer.masksToBounds = true
             return cell
         }
     }
-
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return tableView == self.tableView ? 28 : 0
+        return 10
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == tableView1 {
-            let city = viewModel.cities[indexPath.section]
-                    let cityMuseumsVC = CityMuseumsListPageVC()
-                    cityMuseumsVC.cityName = city.name
-                    cityMuseumsVC.cityImageURL = city.imageUrl
-                    navigationController?.pushViewController(cityMuseumsVC, animated: true)
-        }
-    }
-    
-    // MARK: UITextFieldDelegate
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentText = (textField.text ?? "") as NSString
-        let updatedText = currentText.replacingCharacters(in: range, with: string)
-        filterCities(with: updatedText)
-        return true
-    }
-    
-    func filterCities(with searchText: String) {
-        if searchText.isEmpty {
-            searchResults = []
+        if tableView == self.tableView {
+            let selectedCity = viewModel.cities[indexPath.section]
+            let cityDetailsVC = CityMuseumsListPageVC()
+            cityDetailsVC.cityName = selectedCity.name
+            cityDetailsVC.cityImageURL = selectedCity.imageUrl
+            navigationController?.pushViewController(cityDetailsVC, animated: true)
         } else {
-            searchResults = viewModel.cities.filter { city in
-                city.name.lowercased().contains(searchText.lowercased())
-            }.map { $0.name }
         }
-        tableView1.reloadData()
+    }
+    
+    // MARK: Search Bar Delegate
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text as NSString? {
+            let searchText = text.replacingCharacters(in: range, with: string)
+            if searchText.isEmpty {
+                searchResults.removeAll()
+                tableView1.isHidden = true
+            } else {
+                searchResults = viewModel.cities.filter {
+                    $0.name.lowercased().contains(searchText.lowercased())
+                }.map { $0.name }
+                tableView1.isHidden = false
+                tableView1.reloadData()
+            }
+        }
+        return true
     }
 }

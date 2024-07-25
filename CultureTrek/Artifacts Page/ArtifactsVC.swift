@@ -1,38 +1,29 @@
-//
-//  ArtifactsVC.swift
-//  CultureTrek
-//
-//  Created by Giorgi Michitashvili on 6/30/24.
-//
-
 import UIKit
 
 class ArtifactsViewController: UIViewController {
     
-    // MARK: Variables and ViewModel
+    // MARK: - Variables and ViewModel
     private let viewModel = ArtifactsViewModel()
     private var tableView: UITableView!
-    var museumNameRecieved: String?
+    var museumNameReceived: String?
     
-    
-    // MARK: LifeCycle
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        setUpUI()
     }
     
-    // MARK: UI Components
-    
-    var title1: UILabel = {
-        var title1 = UILabel()
+    // MARK: - UI Components
+    private var title1: UILabel = {
+        let title1 = UILabel()
         title1.textColor = .white
         title1.font = UIFont(name: "FiraCode-Regular", size: 35)
         title1.textAlignment = .left
+        title1.numberOfLines = 0
         return title1
     }()
     
-    var museumImageView: UIImageView = {
+    private var museumImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -40,39 +31,37 @@ class ArtifactsViewController: UIViewController {
         return imageView
     }()
     
-    var featuredArtifactsTitle: UILabel = {
-        var featuredArtifactsTitle = UILabel()
-        featuredArtifactsTitle.text = "Featured Artifacts"
-        featuredArtifactsTitle.font = UIFont(name: "FiraCode-Regular", size: 30)
-        featuredArtifactsTitle.textAlignment = .left
-        featuredArtifactsTitle.textColor = .white
-        return featuredArtifactsTitle
+    private var featuredArtifactsTitle: UILabel = {
+        let label = UILabel()
+        label.text = "Featured Artifacts"
+        label.font = UIFont(name: "FiraCode-Regular", size: 30)
+        label.textAlignment = .left
+        label.textColor = .white
+        return label
     }()
     
-    // MARK: UI Set Up
-    
-    func setUpUI() {
+    // MARK: - UI Set Up
+    private func setUpUI() {
         view.backgroundColor = UIColor(hex: "181A20")
-        //Data Fetching
+        
+        // Data Fetching
         setupViewModel()
-        viewModel.fetchArtifacts(for: museumNameRecieved ?? "Louvre")
+        viewModel.fetchArtifacts(for: museumNameReceived ?? "Louvre")
         fetchMuseumPhoto()
         
         // UI Set Up
         configureTitle1()
         configureMuseumImageView()
-        configureFeaturedMuseumsTitle()
+        configureFeaturedArtifactsTitle()
         setupTableView()
         
-        
         navigationItem.hidesBackButton = true
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
-    func configureTitle1() {
+    private func configureTitle1() {
         view.addSubview(title1)
-        title1.text = museumNameRecieved
-        title1.numberOfLines = 0
+        title1.text = museumNameReceived
         title1.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             title1.topAnchor.constraint(equalTo: view.topAnchor, constant: 73),
@@ -81,7 +70,7 @@ class ArtifactsViewController: UIViewController {
         ])
     }
     
-    func configureMuseumImageView() {
+    private func configureMuseumImageView() {
         view.addSubview(museumImageView)
         museumImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -92,7 +81,7 @@ class ArtifactsViewController: UIViewController {
         ])
     }
     
-    func configureFeaturedMuseumsTitle() {
+    private func configureFeaturedArtifactsTitle() {
         view.addSubview(featuredArtifactsTitle)
         featuredArtifactsTitle.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -102,16 +91,15 @@ class ArtifactsViewController: UIViewController {
         ])
     }
     
-    // MARK: TableView Set Up
-    
+    // MARK: - TableView Set Up
     private func setupTableView() {
-        tableView = UITableView(frame: view.bounds)
+        tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(ArtifactsTableViewCell.self, forCellReuseIdentifier: ArtifactsTableViewCell.identifier)
-        view.addSubview(tableView)
         tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: featuredArtifactsTitle.bottomAnchor, constant: 20),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -120,8 +108,7 @@ class ArtifactsViewController: UIViewController {
         ])
     }
     
-    // MARK: ViewModel Set Up
-    
+    // MARK: - ViewModel Set Up
     private func setupViewModel() {
         viewModel.onArtifactsUpdated = { [weak self] in
             DispatchQueue.main.async {
@@ -138,10 +125,9 @@ class ArtifactsViewController: UIViewController {
         }
     }
     
-    // MARK: Fetch Museum Photo
-    
+    // MARK: - Fetch Museum Photo
     private func fetchMuseumPhoto() {
-        guard let museumName = museumNameRecieved else { return }
+        guard let museumName = museumNameReceived else { return }
         
         viewModel.fetchImageForAMuseum(museumName) { [weak self] result in
             DispatchQueue.main.async {
@@ -157,14 +143,15 @@ class ArtifactsViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource and UITableViewDelegate
-
 extension ArtifactsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.artifacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ArtifactsTableViewCell.identifier, for: indexPath) as! ArtifactsTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ArtifactsTableViewCell.identifier, for: indexPath) as? ArtifactsTableViewCell else {
+            return UITableViewCell()
+        }
         let artifact = viewModel.artifacts[indexPath.row]
         cell.configure(with: artifact.title.last, imageURLString: artifact.edmIsShownBy?.last)
         return cell
@@ -172,7 +159,6 @@ extension ArtifactsViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 // MARK: - UIImageView Extension for Loading Images
-
 extension UIImageView {
     func loadImage(from url: URL?) {
         guard let url = url else { return }
@@ -186,8 +172,13 @@ extension UIImageView {
     }
 }
 
+// MARK: - UIGestureRecognizerDelegate
 extension ArtifactsViewController: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
+}
+
+#Preview {
+    ArtifactsViewController()
 }

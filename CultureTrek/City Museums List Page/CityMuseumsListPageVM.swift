@@ -7,6 +7,7 @@ class CityMuseumsListPageVM {
     var museumNames: [String] = []
     var onDataUpdated: (() -> Void)?
     var onError: ((Error) -> Void)?
+    var city: String = ""
     
     // MARK: Functions
     

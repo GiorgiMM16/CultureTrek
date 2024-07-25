@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyClz_t1mi9C5eEiOFtt_m4-C5vysltbXSs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>991977956888</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>tbc.CultureTrek</string>
+	<key>PROJECT_ID</key>
+	<string>culturetrek-4e45e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>culturetrek-4e45e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:991977956888:ios:25b8cfa159930fe231c56d</string>
+</dict>
+</plist>

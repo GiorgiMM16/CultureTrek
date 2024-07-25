@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB15A3922C52A64100DE81D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB15A3912C52A64100DE81D4 /* GoogleService-Info.plist */; };
 		CB21E5CE2C4519E3002F5CC9 /* MuseumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB21E5CD2C4519E3002F5CC9 /* MuseumTableViewCell.swift */; };
 		CB31C30D2C428BC400C96C61 /* LogInPageViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31C30C2C428BC400C96C61 /* LogInPageViewDelegate.swift */; };
 		CB31C30F2C42CACC00C96C61 /* RegisterViewPageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31C30E2C42CACC00C96C61 /* RegisterViewPageDelegate.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB15A3912C52A64100DE81D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB21E5CD2C4519E3002F5CC9 /* MuseumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumTableViewCell.swift; sourceTree = "<group>"; };
 		CB31C30C2C428BC400C96C61 /* LogInPageViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPageViewDelegate.swift; sourceTree = "<group>"; };
 		CB31C30E2C42CACC00C96C61 /* RegisterViewPageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewPageDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		CB6A5D342C316CEC000BF551 /* CultureTrek */ = {
 			isa = PBXGroup;
 			children = (
+				CB15A3912C52A64100DE81D4 /* GoogleService-Info.plist */,
 				CB31C3102C43149800C96C61 /* Reusable Components */,
 				CBB4B57D2C41891A00B08562 /* Tab Bar */,
 				CB4E4EE02C3C812E00FAA3D3 /* Fonts */,
@@ -311,6 +314,7 @@
 			files = (
 				CBF9AB942C3FB8DB004CFBC0 /* FiraCode-Regular.ttf in Resources */,
 				CB6A5D3F2C316CED000BF551 /* Assets.xcassets in Resources */,
+				CB15A3922C52A64100DE81D4 /* GoogleService-Info.plist in Resources */,
 				CB6A5D422C316CED000BF551 /* Base in Resources */,
 				CB4E4EE22C3C813C00FAA3D3 /* FrederickatheGreat-Regular.ttf in Resources */,
 			);

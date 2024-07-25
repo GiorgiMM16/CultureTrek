@@ -160,7 +160,7 @@ class MainPageVC: UIViewController, UIGestureRecognizerDelegate {
         if let page = sender.view {
             let selectedMuseum = ["the louvre", "the british museum", "the national gallery", "uffizi galleries", "acropolis museum"][page.tag]
             let artifactsViewController = ArtifactsViewController()
-            artifactsViewController.museumNameRecieved = selectedMuseum
+            artifactsViewController.museumNameReceived = selectedMuseum
             navigationController?.pushViewController(artifactsViewController, animated: true)
         }
     }
@@ -292,7 +292,7 @@ extension MainPageVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedMuseum = searchResults[indexPath.row]
         let artifactsViewController = ArtifactsViewController()
-        artifactsViewController.museumNameRecieved = selectedMuseum
+        artifactsViewController.museumNameReceived = selectedMuseum
         navigationController?.pushViewController(artifactsViewController, animated: true)
     }
 }

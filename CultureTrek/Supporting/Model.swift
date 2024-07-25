@@ -178,3 +178,14 @@ struct Museum: Codable {
     let name: String
     let address: String
 }
+
+// MARK: Logging In User Object
+
+struct User: Identifiable, Codable {
+    var id: String
+    var email: String
+}
+
+extension User {
+    static var MOCK_USER = User(id: NSUUID().uuidString, email: "")
+}
