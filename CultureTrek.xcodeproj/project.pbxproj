@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CB15A3922C52A64100DE81D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB15A3912C52A64100DE81D4 /* GoogleService-Info.plist */; };
+		CB15A3952C52B7B600DE81D4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CB15A3942C52B7B600DE81D4 /* FirebaseAnalytics */; };
+		CB15A3972C52B7B600DE81D4 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB15A3962C52B7B600DE81D4 /* FirebaseAnalyticsSwift */; };
 		CB21E5CE2C4519E3002F5CC9 /* MuseumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB21E5CD2C4519E3002F5CC9 /* MuseumTableViewCell.swift */; };
 		CB31C30D2C428BC400C96C61 /* LogInPageViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31C30C2C428BC400C96C61 /* LogInPageViewDelegate.swift */; };
 		CB31C30F2C42CACC00C96C61 /* RegisterViewPageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31C30E2C42CACC00C96C61 /* RegisterViewPageDelegate.swift */; };
@@ -87,6 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB15A3972C52B7B600DE81D4 /* FirebaseAnalyticsSwift in Frameworks */,
+				CB15A3952C52B7B600DE81D4 /* FirebaseAnalytics in Frameworks */,
 				CB6A5D7D2C31711A000BF551 /* SimpleNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +270,8 @@
 			name = CultureTrek;
 			packageProductDependencies = (
 				CB6A5D7C2C31711A000BF551 /* SimpleNetworking */,
+				CB15A3942C52B7B600DE81D4 /* FirebaseAnalytics */,
+				CB15A3962C52B7B600DE81D4 /* FirebaseAnalyticsSwift */,
 			);
 			productName = CultureTrek;
 			productReference = CB6A5D322C316CEC000BF551 /* CultureTrek.app */;
@@ -297,6 +303,7 @@
 			mainGroup = CB6A5D292C316CEB000BF551;
 			packageReferences = (
 				CB6A5D7B2C31711A000BF551 /* XCRemoteSwiftPackageReference "SimpleNetworking" */,
+				CB15A3932C52B7B600DE81D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = CB6A5D332C316CEC000BF551 /* Products */;
 			projectDirPath = "";
@@ -567,6 +574,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CB15A3932C52B7B600DE81D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.29.0;
+			};
+		};
 		CB6A5D7B2C31711A000BF551 /* XCRemoteSwiftPackageReference "SimpleNetworking" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/GujMeister/SimpleNetworking";
@@ -578,6 +593,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CB15A3942C52B7B600DE81D4 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB15A3932C52B7B600DE81D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		CB15A3962C52B7B600DE81D4 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB15A3932C52B7B600DE81D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
 		CB6A5D7C2C31711A000BF551 /* SimpleNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CB6A5D7B2C31711A000BF551 /* XCRemoteSwiftPackageReference "SimpleNetworking" */;
